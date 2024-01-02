@@ -22,3 +22,18 @@ if __name__ == "__main__":
                 bot.book.save("auto_save")
         if action == 'exit':
             break
+
+"""
+    choice = {
+        'add': AddBot(),
+        'search': SearchBot(),
+        'exit': ExitBot()
+    }
+
+    action = input('Choice an action: ')
+
+    if action in choice:
+        choice[action].handle()
+    else:
+        print('Incorrect action.')
+"""
