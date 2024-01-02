@@ -1,6 +1,8 @@
 from AddressBook import *
 
 
+
+# Test commit to branch origin/release_1.0
 class Bot:
     def __init__(self):
         self.book = AddressBook()
