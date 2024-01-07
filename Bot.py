@@ -1,8 +1,5 @@
 from AddressBook import *
 
-"""
-from AddressBook import *
-
 
 class Command:
     def execute(self, bot):
@@ -20,6 +17,15 @@ class AddCommand(Command):
         record = Record(name, phones, birth, email, status, note)
         bot.book.add(record)
 
+        # name = Name(input("Name: ")).value.strip()
+        # phones = Phone().value
+        # birth = Birthday().value
+        # email = Email().value.strip()
+        # status = Status().value.strip()
+        # note = Note(input("Note: ")).value
+        # record = Record(name, phones, birth, email, status, note)
+        # return self.book.add(record)
+        
 
 class SearchCommand(Command):
     def execute(self, bot):
@@ -27,11 +33,25 @@ class SearchCommand(Command):
         category = input('Search category: ')
         pattern = input('Search pattern: ')
         result = bot.book.search(pattern, category)
+        birth = ''
+        print('This is SearchBot()')
+        print(result)
         for account in result:
             if account['birthday']:
                 birth = account['birthday'].strftime("%d/%m/%Y")
-                result = "_" * 50 + "\n" + f"Name: {account['name']} \nPhones: {', '.join(account['phones'])} \nBirthday: {birth} \nEmail: {account['email']} \nStatus: {account['status']} \nNote: {account['note']}\n" + "_" * 50
-                print(result)
+            result = "_" * 50 + "\n" + f"Name: {account['name']} \nPhones: {', '.join(account['phones'])} \nBirthday: {birth} \nEmail: {account['email']} \nStatus: {account['status']} \nNote: {account['note']}\n" + "_" * 50
+            print(result)
+
+        # print("There are following categories: \nName \nPhones \nBirthday \nEmail \nStatus \nNote")
+        # category = input('Search category: ')
+        # pattern = input('Search pattern: ')
+        # result = (self.book.search(pattern, category))
+        # for account in result:
+        #     if account['birthday']:
+        #         birth = account['birthday'].strftime("%d/%m/%Y")
+        #         result = "_" * 50 + "\n" + f"Name: {account['name']} \nPhones: {', '.join(account['phones'])} \nBirthday: {birth} \nEmail: {account['email']} \nStatus: {account['status']} \nNote: {account['note']}\n" + "_" * 50
+        #         print(result)
+
 
 
 class EditCommand(Command):
@@ -41,11 +61,19 @@ class EditCommand(Command):
         new_value = input("New Value: ")
         bot.book.edit(contact_name, parameter, new_value)
 
+        # contact_name = input('Contact name: ')
+        # parameter = input('Which parameter to edit(name, phones, birthday, status, email, note): ').strip()
+        # new_value = input("New Value: ")
+        # return self.book.edit(contact_name, parameter, new_value)
+
 
 class RemoveCommand(Command):
     def execute(self, bot):
         pattern = input("Remove (contact name or phone): ")
         bot.book.remove(pattern)
+
+        # pattern = input("Remove (contact name or phone): ")
+        # return self.book.remove(pattern)
 
 
 class SaveCommand(Command):
@@ -53,21 +81,36 @@ class SaveCommand(Command):
         file_name = input("File name: ")
         bot.book.save(file_name)
 
+        # file_name = input("File name: ")
+        # return self.book.save(file_name)
+
 
 class LoadCommand(Command):
     def execute(self, bot):
         file_name = input("File name: ")
         bot.book.load(file_name)
 
+        # file_name = input("File name: ")
+        # return self.book.load(file_name)
+
 
 class CongratulateCommand(Command):
     def execute(self, bot):
         print(bot.book.congratulate())
 
+        # print(self.book.congratulate())
+
 
 class ViewCommand(Command):
     def execute(self, bot):
         print(bot.book)
+
+        # print(self.book)
+
+
+class ExitCommand(Command):
+    def execute(self, bot):
+        pass
 
 
 class Bot:
@@ -82,6 +125,7 @@ class Bot:
             'load': LoadCommand(),
             'congratulate': CongratulateCommand(),
             'view': ViewCommand(),
+            'exit': ExitCommand(),
         }
 
     def handle(self, action):
@@ -89,6 +133,9 @@ class Bot:
             self.commands[action].execute(self)
         else:
             print("There is no such command!")
+
+
+"""
 
 
 # Приклад використання:
@@ -132,7 +179,7 @@ class SearchBot(AbstractBot):
                 print(result)
 """
 
-
+"""
 class Bot:
     def __init__(self):
         self.book = AddressBook()
@@ -179,3 +226,4 @@ class Bot:
             pass
         else:
             print("There is no such command!")
+"""
