@@ -143,9 +143,9 @@ class AddressBook(UserList):
                 self.data.remove(account)
                 self.log(f"Contact {account['name']} has been removed!")
                 flag = True
-            '''if pattern in account['phones']:
-                        account['phones'].remove(pattern)
-                        self.log.log(f"Phone number of {account['name']} has been removed!")'''
+            if pattern in account['phones']:
+                account['phones'].remove(pattern)
+                self.log(f"Phone number of {account['name']} has been removed!")
         return flag
 
     def __get_current_week(self):
